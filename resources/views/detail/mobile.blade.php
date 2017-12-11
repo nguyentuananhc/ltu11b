@@ -2,11 +2,11 @@
 @section('content')
 	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
     <h3 class="panel-title">
-      <span class="glyphicon glyphicon-home"><a href="{!!url('/')!!}" title=""> Home</a></span> 
+      <span class="glyphicon glyphicon-home"><a href="{!!url('/')!!}" title=""> Home</a></span>
       <span class="glyphicon glyphicon-chevron-right" style="font-size: 11px;"></span><a href="{!!url('/mobile')!!}" title=""> Điện thoại</a>
       <span class="glyphicon glyphicon-chevron-right" style="font-size: 11px;"></span> <a href="#" title="">{!!$slug!!}</a>
-    </h3>              
-    <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8 no-padding">              
+    </h3>
+    <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8 no-padding">
       <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 ">
           <div class="panel panel-success">
@@ -22,13 +22,13 @@
                         <img class="img-responsive img-mobile" src="{!!url('public/uploads/products/'.$data->images)!!}" alt="img responsive">
                       </div>
                       <div class="img-slide">
-                        <div class="panel panel-default text-center">        
+                        <div class="panel panel-default text-center">
                           <div id="links">
                             @foreach($data->detail_img as $row)
-                              <a href="{!!url('uploads/products/details/'.$row->images_url)!!}" title="{!!$data->name!!}" data-gallery>
+                              <a href="{!!url('public/uploads/products/details/'.$row->images_url)!!}" title="{!!$data->name!!}" data-gallery>
                                   <img src="{!!url('public/uploads/products/details/'.$row->images_url)!!}" alt="{!!$data->name!!}" width="30" height="40">
                               </a>
-                            @endforeach                              
+                            @endforeach
                           </div>
                             <!-- The Bootstrap Image Gallery lightbox, should be a child element of the document body -->
                             <div id="blueimp-gallery" class="blueimp-gallery">
@@ -63,9 +63,9 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>  
-                          </div>                       
-                        </div>                     
+                            </div>
+                          </div>
+                        </div>
                       <label class="btn btn-large btn-block btn-warning">{!!number_format($data->price)!!} vnd</label>
                     </div>
                     <div class="col-xs-12 col-sm-7 col-md-7 col-lg-7">
@@ -81,9 +81,9 @@
                               <li><span class="glyphicon glyphicon-ok-sign"></span>{!!$data->promo2!!}</li>
                             @elseif ($data->promo3!='')
                               <li><span class="glyphicon glyphicon-ok-sign"></span>{!!$data->promo3!!}</li>
-                            @endif 
-                              <li><span class="glyphicon glyphicon-ok-sign"></span>Cài đặt phần miềm, tải nhạc - ứng dụng miến phí</li>                                                       
-                          </div>                         
+                            @endif
+                              <li><span class="glyphicon glyphicon-ok-sign"></span>Cài đặt phần miềm, tải nhạc - ứng dụng miến phí</li>
+                          </div>
                         </div>
                       </div>
                       <div class="panel panel-info">
@@ -162,16 +162,16 @@
                 </div>
                 <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
                   <div class="table-responsive">
-                    <div class="panel panel-default">        
-                      <div class="panel-heading"> 
+                    <div class="panel panel-default">
+                      <div class="panel-heading">
                         <small> Hình ảnh thực tế (click để xem kích thước đầy đủ)</small>
                       </div>
                       <div id="links">
                         @foreach($data->detail_img as $row)
-                          <a href="{!!url('uploads/products/details/'.$row->images_url)!!}" title="{!!$data->name!!}" data-gallery>
+                          <a href="{!!url('public/uploads/products/details/'.$row->images_url)!!}" title="{!!$data->name!!}" data-gallery>
                               <img src="{!!url('public/uploads/products/details/'.$row->images_url)!!}" alt="{!!$data->name!!}"  width="25%" height="120">
                           </a>
-                        @endforeach                          
+                        @endforeach
                       </div>
                         <!-- The Bootstrap Image Gallery lightbox, should be a child element of the document body -->
                         <div id="blueimp-gallery" class="blueimp-gallery">
@@ -206,7 +206,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>  
+                        </div>
                       </div>
                   </div>
                 </div>
@@ -221,7 +221,7 @@
                       </p>
                     </div>
                     <div id="collapseTwo" class="accordion-body collapse">
-                      <div class="accordion-inner">                        
+                      <div class="accordion-inner">
                           {!!$data->review!!}
                       </div>
                     </div>
@@ -233,34 +233,34 @@
                 <hr>
                 <h2 style="padding-left: 20px;"><small>Tin tức mới</small></h2>
                 <hr>
-                @include('modules.tin-tuc')  
+                @include('modules.tin-tuc')
               </div><!-- /row -->
 
             </div>
-          </div>   
+          </div>
         </div>
-      </div>     
-    </div> 
-    <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 no-padding">            
+      </div>
+    </div>
+    <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 no-padding">
       <!-- panel inffo 1 -->
       <div class="panel panel-info">
         <div class="panel-heading">
           <h3 class="panel-title text-center">Sản phẩm tương tự</h3>
         </div>
         <div class="panel-body no-padding">
-        <?php 
+        <?php
           $mobile = DB::table('products')
                 ->join('category', 'products.cat_id', '=', 'category.id')
                 ->join('pro_details', 'pro_details.pro_id', '=', 'products.id')
                 ->where('category.parent_id','=','1')
                 ->select('products.*','pro_details.cpu','pro_details.ram','pro_details.screen','pro_details.vga','pro_details.storage','pro_details.exten_memmory','pro_details.cam1','pro_details.cam2','pro_details.sim','pro_details.connect','pro_details.pin','pro_details.os','pro_details.note')
                 ->orderBy('products.created_at', 'desc')
-                ->paginate(2); 
+                ->paginate(2);
 
         ?>
         @foreach($mobile as $row)
           <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 no-padding">
-            <div class="thumbnail mobile">              
+            <div class="thumbnail mobile">
               <div class="bt">
                 <div class="image-m pull-left">
                   <img class="img-responsive" src="{!!url('public/uploads/products/'.$row->images)!!}" alt="{!!$row->name!!}">
@@ -268,33 +268,33 @@
                 <div class="intro pull-right">
                   <h1><small class="title-mobile">{!!$row->name!!}</small></h1>
                   <li>{!!$row->intro!!}</li>
-                  <span class="label label-info">Khuyễn mãi</span>   
+                  <span class="label label-info">Khuyễn mãi</span>
                   @if ($row->promo1!='')
                     <li><span class="glyphicon glyphicon-ok-sign"></span>{!!$row->promo1!!}</li>
                   @elseif($row->promo2!='')
                     <li><span class="glyphicon glyphicon-ok-sign"></span>{!!$row->promo2!!}</li>
                   @elseif ($row->promo3!='')
                     <li><span class="glyphicon glyphicon-ok-sign"></span>{!!$row->promo3!!}</li>
-                  @endif 
-                    <li><span class="glyphicon glyphicon-ok-sign"></span>Cài đặt phần miềm, tải nhạc - ứng dụng miến phí</li> 
+                  @endif
+                    <li><span class="glyphicon glyphicon-ok-sign"></span>Cài đặt phần miềm, tải nhạc - ứng dụng miến phí</li>
                 </div><!-- /div introl -->
               </div> <!-- /div bt -->
               <div class="ct">
                 <a href="{!!url('mobile/'.$row->id.'-'.$row->slug)!!}" title="Chi tiết">
-                  <span class="label label-info">Ưu đãi khi mua</span>   
+                  <span class="label label-info">Ưu đãi khi mua</span>
                   @if ($row->promo1!='')
                     <li><span class="glyphicon glyphicon-ok-sign"></span>{!!$row->promo1!!}</li>
                   @elseif($row->promo2!='')
                     <li><span class="glyphicon glyphicon-ok-sign"></span>{!!$row->promo2!!}</li>
                   @elseif ($row->promo3!='')
                     <li><span class="glyphicon glyphicon-ok-sign"></span>{!!$row->promo3!!}</li>
-                  @endif 
-                    <li><span class="glyphicon glyphicon-ok-sign"></span>Cài đặt phần miềm, tải nhạc - ứng dụng miến phí</li> 
-                  <span class="label label-warning">Cấu Hình Nổi bật</span> 
+                  @endif
+                    <li><span class="glyphicon glyphicon-ok-sign"></span>Cài đặt phần miềm, tải nhạc - ứng dụng miến phí</li>
+                  <span class="label label-warning">Cấu Hình Nổi bật</span>
                   <li><strong>CPU</strong> : <i>  {!!$row->cpu!!}</i></li>
-                  <li><strong>Màn Hình</strong> : <i>{!!$row->screen!!} </i></li> 
-                  <li><strong>Camera</strong> : Trước  <i>{!!$row->cam1!!}</i> Sau <i>{!!$row->cam2!!}</i></li> 
-                  <li><strong>HĐH</strong> :<i> {!!$row->os!!} </i> <strong> Bộ nhớ trong</strong> :<i> {!!$row->storage!!} </i></li> 
+                  <li><strong>Màn Hình</strong> : <i>{!!$row->screen!!} </i></li>
+                  <li><strong>Camera</strong> : Trước  <i>{!!$row->cam1!!}</i> Sau <i>{!!$row->cam2!!}</i></li>
+                  <li><strong>HĐH</strong> :<i> {!!$row->os!!} </i> <strong> Bộ nhớ trong</strong> :<i> {!!$row->storage!!} </i></li>
                   <li><strong>Pin</strong> :<i> {!!$row->pin!!}</i></li>
                 </a>
               </div>
@@ -302,12 +302,12 @@
                 <a href="{!!url('gio-hang/addcart/'.$row->id)!!}" class="btn btn-success pull-right add">Thêm vào giỏ </a>
             </div> <!-- / div thumbnail -->
           </div>  <!-- /div col-4 -->
-        @endforeach        
+        @endforeach
 
         </div>
       </div> <!-- /panel info 2  quản cáo 1          -->
-      
-    <!-- panel info 2  quản cáo 1          -->          
+
+    <!-- panel info 2  quản cáo 1          -->
     <div class="panel panel-info">
       <div class="panel-heading">
         <h3 class="panel-title text-center">Sự kiện HOT</h3>
@@ -319,7 +319,7 @@
         <a href="#" title=""><img src="{!!url('public/images/slides/thumbs/qc4.png')!!}" alt="" width="100%" height="100%"> </a>
         <a href="#" title=""><img src="{!!url('public/images/slides/thumbs/qc5.png')!!}" alt="" width="100%" height="100%"> </a>
       </div>
-    </div> <!-- /panel info 2  quản cáo 1          -->        
+    </div> <!-- /panel info 2  quản cáo 1          -->
     <div class="panel panel-info">
       <div class="panel-heading">
         <h3 class="panel-title">Thống kê</h3>
@@ -331,7 +331,7 @@
         <p>Số Người Đang Xem : 435</p>
       </div>
     </div>
-     <!-- /panel info 2  quản cáo 1          -->  
+     <!-- /panel info 2  quản cáo 1          -->
      <!-- fan pages myweb -->
     <div class="panel panel-info">
       <div class="panel-heading">
@@ -340,8 +340,8 @@
       <div class="panel-body">
         Hãy <a href="#" title="">Like</a> facebook của MyWeb để cập nhật tin mới nhất
       </div>
-    </div> <!-- /fan pages myweb -->        
-  </div> 
+    </div> <!-- /fan pages myweb -->
+  </div>
 </div>
 <!-- ===================================================================================/news ============================== -->
 @endsection

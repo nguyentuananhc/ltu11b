@@ -19,14 +19,14 @@
                   <div class="row">
                     <div class="col-xs-12 col-sm-5 col-md-5 col-lg-5">
                       <div class="img-box">
-                        <img class="img-responsive img-mobile" src="{!!url('uploads/products/'.$data->images)!!}" alt="{!!$data->name!!}">
+                        <img class="img-responsive img-mobile" src="{!!url('public/uploads/products/'.$data->images)!!}" alt="{!!$data->name!!}">
                       </div>
                       <div class="img-slide">
                         <div class="panel panel-default text-center">
                           <div id="links">
                             @foreach($data->detail_img as $row)
-                              <a href="{!!url('uploads/products/details/'.$row->images_url)!!}" title="{!!$data->name!!}" data-gallery>
-                                  <img src="{!!url('uploads/products/details/'.$row->images_url)!!}" alt="{!!$data->name!!}" width="30" height="40">
+                              <a href="{!!url('public/uploads/products/details/'.$row->images_url)!!}" title="{!!$data->name!!}" data-gallery>
+                                  <img src="{!!url('public/uploads/products/details/'.$row->images_url)!!}" alt="{!!$data->name!!}" width="30" height="40">
                               </a>
                             @endforeach
                           </div>
@@ -215,7 +215,7 @@
             <div class="thumbnail mobile">
               <div class="bt">
                 <div class="image-m pull-left">
-                  <img class="img-responsive" src="{!!url('uploads/products/'.$row->images)!!}" alt="{!!$row->name!!}">
+                  <img class="img-responsive" src="{!!url('public/uploads/products/'.$row->images)!!}" alt="{!!$row->name!!}">
                 </div>
                 <div class="intro pull-right">
                   <h1><small class="title-mobile">{!!$row->name!!}</small></h1>
